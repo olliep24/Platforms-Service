@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "PlatformService.Controllers.PlatformsContoller",
+    "ContainingType": "PlatformService.Controllers.PlatformsController",
     "Method": "GetPlatforms",
-    "RelativePath": "api/PlatformsContoller",
+    "RelativePath": "api/Platforms",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -18,5 +18,32 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "PlatformService.Controllers.PlatformsController",
+    "Method": "GetPlatformById",
+    "RelativePath": "api/Platforms/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PlatformService.Dtos.PlatformReadDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetPlatformById"
   }
 ]

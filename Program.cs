@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PlatformService.AsyncDataServices;
 using PlatformService.Data;
 using PlatformService.SyncDataServices.Http;
 
@@ -23,7 +24,7 @@ if (builder.Environment.IsProduction())
 else
 {
     Console.WriteLine("Using InMem Db");
-    builder.Services.AddDbContext<AppDbContext>(options => 
+    builder.Services.AddDbContext<AppDbContext>(options =>
     {
         options.UseInMemoryDatabase("InMemory");
     });
@@ -32,6 +33,7 @@ else
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 
 Console.WriteLine($"--> Command service endpoint: {builder.Configuration["CommandsService"]}");
 
